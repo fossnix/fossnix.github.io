@@ -10,18 +10,18 @@
      xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
      xmlns:media="http://search.yahoo.com/mrss/"><channel>
   <title>Blog Index</title>
-  <atom:link href="http://aryak.codeberg.page/index.xml" rel="self" type="application/rss+xml" />
-  <link>http://aryak.codeberg.page/</link>
+  <atom:link href="http://example.com/index.xml" rel="self" type="application/rss+xml" />
+  <link>http://example.com/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Wed, 28 Jul 2021 22:43:27 +0530</pubDate>
-  <lastBuildDate>Wed, 28 Jul 2021 22:43:27 +0530</lastBuildDate>
+  <pubDate>Wed, 28 Jul 2021 22:45:34 +0530</pubDate>
+  <lastBuildDate>Wed, 28 Jul 2021 22:45:34 +0530</lastBuildDate>
   <generator>Emacs 27.2 Org-mode 9.4.6</generator>
   <webMaster>ak@laptop (Arya Kiran)</webMaster>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
     <title>Blog Index</title>
-    <link>http://aryak.codeberg.page/</link>
+    <link>http://example.com/</link>
   </image>
 
   <ul class="org-ul">
