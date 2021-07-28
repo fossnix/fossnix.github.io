@@ -1,0 +1,6 @@
+#+title: About
+#+filetags: about
+
+Hi, I'm Arya and This is my blog
+
+Here I post lot of cool tech stuff

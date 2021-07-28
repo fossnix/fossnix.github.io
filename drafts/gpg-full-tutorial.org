@@ -1,0 +1,162 @@
+#+title: GPG Full tutorial
+#+date: <2021-07-27 Sat>
+#+setupfile: ../org-templates/post.org
+#+author Arya K
+I know there are a million gpg tutorials out there
+
+But the problem is they dont cover everything.
+
+For example one may cover encrypting a file but not a folder.
+
+I want to make an all in one gpg tutorial
+
+* Installation
+  GPG is preinstalled on most "normie" distros.
+
+  If it isn't installed on the distro you are using, you can install it via your package manager.
+
+  It is usually called gnupg, gnupg2, gnupg-utils, gnupg2-utils, gpg2 or gpg
+
+  After you have installed gpg, you first need to generate a key.
+
+  If you want your gpg stuff to be XDG Compliant you can set the following variable in your .bash_profile or .zprofile
+
+  #+begin_src bash
+    export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
+  #+end_src
+
+  You have to create the directory first or else gpg will error out
+
+  You also need to declare this variable in your .bashrc or .zshrc if you are using Xorg or wayland
+
+  #+begin_src bash
+    export GPG_TTY=$(tty)
+  #+end_src
+
+  To do this you can use ~gpg --full-gen-key~
+
+  You should get an interactive setup menu
+
+  Chose RSA as the type of key you want.
+
+  RSA is byfar the most secure and prevalent out of the options.
+
+  Chose the byte size as 4096.
+
+  This may impact performance but you will not notice it unless you are in a potato of a PC
+
+  you can chose the expiration options.
+
+  This is upto personal choice.
+
+  I usually set it to key doesn't expire
+
+  Now it will ask you for some personal info
+
+  This data is used for recognition purposes.
+
+  Thats it! You have sucessfully installed and configured GnuPG
+
+  [[../images/posts/gpg-full-tutorial/gpg-gen.gif]]
+
+  Note: You can list all your private keys with ~gpg --list-secret-keys~ 
+
+  Note: If you want to delete your private key you can use
+
+  #+begin_src bash
+    gpg --delete-secret-key <key-id>
+  #+end_src
+
+  Replace <key-id> with your keyid from the list-secret-keys
+
+  Note: You can edit your private key with ~gpg --edit-key <key-id>~ 
+
+  Replace <key-id> with your keyid with yours which you got from ~gpg --list-secret-keys~
+* Symetric
+  Most of you use symmetric encryption on a daily basis.
+
+  AES is the encryption algo gpg uses for symmetric encryption by default. It is a popular symmetric encryption standard is used by many things you use everyday.
+
+  Symmetric-key algorithms are algorithms for cryptography that use the same cryptographic keys for both the encryption of plaintext and the decryption of ciphertext.
+
+  The keys, in practice, represent a shared secret between two or more parties that can be used to maintain a private information link.
+** File
+*** Encrypting a file
+   To encrypt a file with gpg you can use the following command
+
+   #+begin_src bash
+     gpg --symmetric /path/to/file
+   #+end_src
+
+   or
+  
+   #+begin_src bash
+     gpg -c /path/to/file
+   #+end_src
+
+   or if you want to specify the name for the file
+
+   #+begin_src bash
+     gpg --output /path/to/file.gpg --symmetric /path/to/file
+   #+end_src
+
+   or
+
+   #+begin_src bash
+     gpg -o /path/to/file.gpg -c /path/to/file
+   #+end_src
+
+   If you want to use ASCII as the output format you can use the following command
+
+   #+begin_src bash
+     gpg -a --symmetric /path/to/file
+   #+end_src
+
+   or
+
+   #+begin_src bash
+     gpg -a -c /path/to/file
+   #+end_src
+
+   or if you want to specify the name for the file
+
+   #+begin_src bash
+     gpg --output /path/to/file.gpg -a --symmetric /path/to/file
+   #+end_src
+
+   or
+
+   #+begin_src bash
+     gpg -o /path/to/file.gpg -a -c /path/to/file
+   #+end_src
+
+   Note: You can use the ~--cipher-algo~ flag if you want to use an algorithm other than AES-128 which is the default.
+
+*** Decrypting a file
+   To decrypt a file with gpg use the following command
+
+   #+begin_src bash
+     gpg -d /path/to/file.gpg
+   #+end_src
+   This will decrypt the file into stdin
+
+   If you want to use the output like that you can add the -q flag so all extra metadata that is given out is suppressed
+
+   most of us would like it to decrypt to a file. For this we can use the ~-o~ flag
+
+   If you want it to decrypt to the same filename as it was when it was encrypted you can use the ~--use-embedded-file-name~ flag
+
+   If you encrypted it as an ascii file you need to prepend the ~-a~ flag
+
+** Folder
+***  Encrypting a folder
+   Like many programs, gpg doesn't accept folders to encrypt.
+
+   This means we need to make a tarball of the directory and then encrypt it via gpg
+
+   There are 2 ways to do it
+
+**** Option 1: gpgtar
+    gpgtar is a program that comes along with gpg which is very useful for encrypting folders
+
+    Here's how to use it

@@ -1,0 +1,163 @@
+#+title: How I backup my stuff to the cloud with rclone
+#+date: <2021-07-18 Sun>
+#+filetags: rclone linux backup cloud onedrive gdrive
+#+setupfile: ../org-templates/post.org
+
+Many linux users have been cribbing over the fact that most cloud storage providers do not offer linux apps.
+
+Yes, there are unofficial clients for some providers like [[https://drive.google.com][google drive]] & [[https://onedrive.com][OneDrive]] but they are just for one service.
+
+Not to talk about the almost non-existent extensibility of those apps.
+
+But there is one star in the endless cribbing which is rclone.
+
+[[https://rclone.org][rclone]] is a CLI app written in [[golang.org][go]] that supports multiple services including
+
+- 1Fichier
+- Amazon Drive
+- Amazon S3
+- Backblaze B2
+- Box
+- Citrix ShareFile
+- Dropbox
+- Enterprise File Fabric
+- FTP
+- Google Cloud Storage
+- Google Drive
+- Google Photos
+- HDFS
+- HTTP
+- Hubic
+- Jottacloud
+- Koofr
+- Mail.ru Cloud
+- Mega
+- Memory
+- Microsoft Azure Blob Storage
+- Microsoft OneDrive
+- OpenDrive
+- OpenStack Swift
+- pCloud
+- premiumize.me
+- put.io
+- QingStor
+- Seafile
+- SFTP
+- SugarSync
+- Tardigrade
+- WebDAV
+- Yandex Disk
+- Zoho WorkDrive
+
+And the best part of it is that the commands are almost identical for all the services.
+
+* Setting up rclone
+  Before we can use rclone we need to set it up with a provider
+
+  I will be showing onedrive the example but the steps are identical for other providers
+** Installing
+   rclone is available in the repos of arch, gentoo, alpine, fedora and more.
+
+   For the full list visit https://pkgs.org/search/?q=rclone
+
+   If your distro doesn't have rclone, you can use their install script
+   #+begin_src sh
+     curl https://rclone.org/install.sh | sudo bash
+   #+end_src
+** OneDrive
+   To setup onedrive first type rclone config in your terminal
+
+   You should an interactive menu which asks whether you want to add a new remote.
+
+ [[../images/posts/rclone/rclone-config-first.png]]
+It should then ask you for a name.
+
+This is what the remote will be called and need not be the name of the service.
+
+Then it will ask you for the provider you want to use.
+
+ I will chose onedrive in this case.
+
+ [[../images/posts/rclone/provider.png]]
+Then it will ask you for a whole bunch of things that I will leave at default.
+
+
+ [[../images/posts/rclone/default.png]]
+
+ Then it will ask if you want to do advanced settings.
+
+ Most of the settings in advanced or not interesting or necessary, so I will chose no
+
+ 
+ [[../images/posts/rclone/advanced.png]]
+Then it will ask whether you want to use autoconfig
+
+Autoconfig will take you to browser to login
+
+If you chose manual you need to jump through alot of hoops as the option is mainly made for headless servers.
+
+[[../images/posts/rclone/auth.png]]
+After you login from the browser you should recieve a success page like this
+
+
+[[../images/posts/rclone/success.png]]
+
+Now it will ask you whether you are using onedrive Personal or sharepoint.
+
+[[../images/posts/rclone/sharevsdrive.png]]
+
+Now it will ask what drive you want to use
+
+[[../images/posts/rclone/drive.png]]
+After this it will give preview of the config that has been generated.
+Click y and then you can click q to quit
+
+Now You are fully authenticated.
+
+
+* Mounting
+  If you want to use your cloud storage like a normal disk, your best bet is to mount it.
+
+  to mount an rclone drive, you can use the command
+
+  #+begin_src sh
+    rclone mount onedrive:/ ~/onedrive --vfs-cache-mode full
+  #+end_src
+  |-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | Part                  | Use                                                                                                                                                        |
+  |-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | mount                 | Subcommand to mount the remote                                                                                                                             |
+  | onerive               | name of remote that has to be mounted                                                                                                                      |
+  | :                     | seperator                                                                                                                                                  |
+  | "/"                   | the directory in the remote that should be mounted. Here / refers to the root. You can chose any folder in the remote too                                  |
+  | ~/onedrive            | the directory where the remote is going to be mounted to                                                                                                   |
+  | --vfs-cache-mode-full | When a file is created in the remote's mount, the file is first cached in the computer and then sent to the server. This helps performance alot (optional) |
+  |-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------|
+--vfs-cache-mode full is optional but highly recommended
+
+You can see all the options [[https://rclone.org/commands/rclone_mount/#options][here]]
+To unmount the remote you can use 
+#+begin_src sh
+  fusermount -u /path/to/local/mount
+#+end_src
+* Backup
+  This is a bit of an advanced way of backing up
+
+  Most of us don't trust cloud providers that much.
+
+  After all most of the major players are involved in shady buisness practices
+
+  But backing up to them seems like a convinient and dangerous idea.
+
+  I will make a script here that will make a tarball of your home directory, encrypt it and send it to the cloud provider so that they don't get any of your data.
+
+  #+begin_src sh
+    # Stop program from running if it is root
+    if [[ $EUID -ne 0 ]]; then
+        :
+    fi
+    mkdir -p backup
+    rclone mount onedrive:/ ~/backup/
+    tar --zstd -cpz ~/ | gpg -c -o ~/backup/backup-%d-%m-%Y.tar.zst
+    
+  #+end_src

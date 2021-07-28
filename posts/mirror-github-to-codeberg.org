@@ -1,0 +1,130 @@
+#+title: Mirroring Github repos to Codeberg
+#+date: <2021-07-17 Sat>
+#+filetags: github git codeberg
+#+setupfile: ../org-templates/post.org
+#+author: Arya K
+There are many reasons you might want to mirror your github repo to codeberg.
+
+For example you don't want your users to be connecting to M$ servers.
+
+But you still want your repo on github for the better discoverability
+
+Its having your cake and eating it too
+
+Here is how you do it
+
+* Preparing for the mirroring
+  First create an account @ codeberg.org
+
+  Then in the dashboard click on the + icon at the top of the UI and click New Migration from the dropdown.
+
+  In This menu chose github as we are migrating the repo from github.
+
+  This will just give a clone of the repo and not delete it.
+
+  The instructions for gitlab and self hosted git repos will be very similar.
+
+  Type in your github repo's clone url.
+
+  Note: Make sure there is a .git at the end of the url.
+
+  If you want your Pull Requests and other data, you can type in a personal access token.
+
+  This will be the same for gitlab.
+
+  For Normal git instance type in the login credentials.
+
+  Then click create repository.
+
+  Now clone the repo hosted on github
+
+* Repository Mirroring
+  There are 2 ways to do the mirroring
+** Option 1: Via git command line
+*** Adding seperate remote for github and codeberg (Optional)
+    This is useful if you want to push specific changes to one service.
+**** Github
+    Replace user with your username and repo with the name of your repo if it isn't obvious aldready.
+    #+begin_src sh
+      git remote add github https://github.com/user/repo.git
+    #+end_src
+  If you prefer git via ssh you can use git@github.com:user/repo.git 
+**** Codeberg
+  Replace user with your username and repo with the name of your repo if it isn't obvious aldready.
+    #+begin_src sh
+      git remote add codeberg https://codeberg.org/user/repo.git
+    #+end_src
+    If you prefer git via ssh you can use git@codeberg.org:user/repo.git
+**** List the remotes
+     For Seeing if the command succeeded, you can use the following command
+     #+begin_src sh
+       git remote -v
+     #+end_src
+     You Should see something like this
+
+     codeberg	https://codeberg.org/user/repo.git (fetch)
+
+     codeberg	https://codeberg.org/user/repo.git (push)
+     
+     github	https://github.com/user/repo.git (fetch)
+
+     github	https://github.com/user/repo.git (push)
+
+     origin	https://github.com/user/repo.git (fetch)
+
+     origin	https://github.com/user/repo.git (push)
+*** Adding codeberg to origin so it pushes to it too when we do git push
+    Right now when you do git push with no args, it will only push to github
+
+    Lets make it such that it uploads to codeberg too!
+    #+begin_src sh
+      git remote set-url --add --push origin https://codeberg.org/user/repo.git
+    #+end_src
+
+    Now when you push it will push it to both codeberg and github
+** Option 2: Via git config file
+   There is a file called config located in the .git directory of your repo
+
+   It is where all the stuff we manipulate via commands go.
+
+   We can also directly manipulate it
+
+   cd into .git and open config in your favourite editor
+
+   and override the file with the following contents
+
+
+   Replace user with your username and repo with the name of your repo if it isn't obvious aldready.
+#+begin_example
+[core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
+[remote "github"]
+    url = https://github.com/user/repo.git
+    fetch = +refs/heads/*:refs/remotes/github/*
+[remote "codeberg"]
+    url = https://codeberg.org/user/repo.git
+    fetch = +refs/heads/*:refs/remotes/codeberg/*
+[remote "origin"]
+    url = https://github.com/user/repo.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+    pushurl = https://github.com/user/repo.git
+    pushurl = https://codeberg.org/user/repo.git
+[branch "main"]
+    remote = origin
+    merge = refs/heads/main
+    pushRemote = origin
+#+end_example
+
+* Testing
+  Now comes the fun part, testing if it works
+
+  Try doing a git push to the repo
+
+  Now check both codeberg and github and it should have updated
+* Problems
+  If you have any issues with this, please [[mailto:aryakiran@zohomail.eu][email me]] 
+
+#+INCLUDE: "../disquss.inc"
