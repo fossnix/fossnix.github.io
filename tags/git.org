@@ -8,3 +8,5 @@
 - [[file:../mirror-github-to-codeberg.org][Mirroring Github repos to Codeberg]]
 - [[file:../mirror-github-to-codeberg.org][Mirroring Github repos to Codeberg]]
 - [[file:../mirror-github-to-codeberg.org][Mirroring Github repos to Codeberg]]
+- [[file:../mirror-github-to-codeberg.org][Mirroring Github repos to Codeberg]]
+- [[file:../mirror-github-to-codeberg.org][Mirroring Github repos to Codeberg]]
