@@ -14,8 +14,8 @@
   <link>https://fossnix.netlify.app/</link><guid>https://fossnix.netlify.app/</guid>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Thu, 29 Jul 2021 11:41:40 +0530</pubDate>
-  <lastBuildDate>Thu, 29 Jul 2021 11:41:40 +0530</lastBuildDate>
+  <pubDate>Thu, 29 Jul 2021 12:29:52 +0530</pubDate>
+  <lastBuildDate>Thu, 29 Jul 2021 12:29:52 +0530</lastBuildDate>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
     <title>Blog Index</title>
@@ -26,7 +26,7 @@
     <item>
       <link>https://fossnix.netlify.app/mirror-github-to-codeberg.html</link><guid>https://fossnix.netlify.app/mirror-github-to-codeberg.html</guid><title>Mirroring Github repos to Codeberg</title>
     
-    </pubDate></item>
+</item>
   
 </channel>
 </rss>
