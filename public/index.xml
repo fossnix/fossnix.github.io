@@ -10,18 +10,18 @@
      xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
      xmlns:media="http://search.yahoo.com/mrss/"><channel>
   <title>Blog Index</title>
-  <atom:link href="https://psachin.gitlab.io/index.xml" rel="self" type="application/rss+xml" />
-  <link>https://psachin.gitlab.io/</link>
+  <atom:link href="https://fossnix.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+  <link>https://fossnix.netlify.app/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Thu, 29 Jul 2021 10:26:27 +0530</pubDate>
-  <lastBuildDate>Thu, 29 Jul 2021 10:26:27 +0530</lastBuildDate>
+  <pubDate>Thu, 29 Jul 2021 11:00:07 +0530</pubDate>
+  <lastBuildDate>Thu, 29 Jul 2021 11:00:07 +0530</lastBuildDate>
   <generator>Emacs 27.2 Org-mode 9.4.6</generator>
   <webMaster>ak@laptop (Arya Kiran)</webMaster>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
     <title>Blog Index</title>
-    <link>https://psachin.gitlab.io/</link>
+    <link>https://fossnix.netlify.app/</link>
   </image>
 
   <ul class="org-ul">

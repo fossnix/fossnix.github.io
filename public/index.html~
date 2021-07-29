@@ -6,12 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Blog Index</title>
 <meta name="generator" content="Org mode">
-<<<<<<< HEAD
 <meta name="author" content="Arya Kiran">
 <link rel='icon' type='image/x-icon' href='/images/favicon.jpg'/>
-=======
-<link rel='icon' type='image/x-icon' href='/images/favicon.ico'/>
->>>>>>> dd6652647b45cade3ea75c50d2da8d17ccde8179
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link rel='stylesheet' href='https://code.cdn.mozilla.net/fonts/fira.css'>
 <link rel='stylesheet' href='/css/site.css?v=2' type='text/css'/>
