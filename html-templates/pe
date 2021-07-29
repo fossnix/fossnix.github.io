@@ -1,0 +1,21 @@
+<div class='intro'>
+  <img src='/images/about/profile.png' alt='Sachin Patil' class='no-border'/>
+  <h1>
+    <span class="gray">Sachin</span>
+    <span class="black">Patil</span>
+  </h1>
+  <p>Free Software Developer | GNU Emacs Hacker</p>
+</div>
+
+<div class='nav'>
+<ul>
+  <li><a href='/'>Blog</a>.</li>
+  <li><a href='/tags/'>Tags</a>.</li>
+  <li><a href='http://gitlab.com/psachin'>GitLab</a>.</li>
+  <li><a href='http://github.com/psachin'>GitHub</a>.</li>
+  <li><a href='https://www.reddit.com/user/psachin'>Reddit</a>.</li>
+  <li><a href='https://youtube.com/user/iclcoolsterU'>YouTube</a>.</li>
+  <li><a href='/index.xml'>RSS</a>.</li>
+  <li><a href='/about/'>About</a></li>
+</ul>
+</div>

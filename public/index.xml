@@ -10,25 +10,28 @@
      xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
      xmlns:media="http://search.yahoo.com/mrss/"><channel>
   <title>Blog Index</title>
-  <atom:link href="http://example.com/index.xml" rel="self" type="application/rss+xml" />
-  <link>http://example.com/</link>
+  <atom:link href="https://psachin.gitlab.io/index.xml" rel="self" type="application/rss+xml" />
+  <link>https://psachin.gitlab.io/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Wed, 28 Jul 2021 20:08:55 -0500</pubDate>
-  <lastBuildDate>Wed, 28 Jul 2021 20:08:55 -0500</lastBuildDate>
+  <pubDate>Thu, 29 Jul 2021 10:26:27 +0530</pubDate>
+  <lastBuildDate>Thu, 29 Jul 2021 10:26:27 +0530</lastBuildDate>
   <generator>Emacs 27.2 Org-mode 9.4.6</generator>
-  <webMaster>root@blaze (nil)</webMaster>
+  <webMaster>ak@laptop (Arya Kiran)</webMaster>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
     <title>Blog Index</title>
-    <link>http://example.com/</link>
+    <link>https://psachin.gitlab.io/</link>
   </image>
 
   <ul class="org-ul">
     <li><p>
       <b><a href="mirror-github-to-codeberg.html">Mirroring Github repos to Codeberg</a></b>
     </p>
-    <p class='pubdate'>by Arya K on Jul 17, 2021.</p></li>
+    <p class='pubdate'>by Arya K on Jul 17, 2021.</p>
+    <p>
+      Tags: <i><a href="../tags/codeberg.html">codeberg</a>, <a href="../tags/git.html">git</a>, <a href="../tags/github.html">github</a></i>
+    </p></li>
   </ul>
 </channel>
 </rss>

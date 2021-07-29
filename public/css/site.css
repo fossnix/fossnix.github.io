@@ -38,8 +38,8 @@ body h4 img {
   border: 0 none;
 }
 body h1 {
-  font-size: 42px;
-  margin-top: 40px;
+    font-size: 42px;
+    margin-top: 40px;
 }
 .gray {
     font-weight: lighter;
@@ -123,7 +123,7 @@ body .tag span {
 body .pubdate {
   color: #aaa;
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: -16px;
   margin-top: -16px;
   text-align: right;
   border-bottom: 1px solid #e2e2e2;

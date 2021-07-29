@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- Jul 28, 2021 -->
+<!-- Jul 29, 2021 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mirroring Github repos to Codeberg</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Arya K" />
-<link rel='icon' type='image/x-icon' href='/images/favicon.ico'/>
+<link rel='icon' type='image/x-icon' href='/images/favicon.jpg'/>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link rel='stylesheet' href='https://code.cdn.mozilla.net/fonts/fira.css'>
 <link rel='stylesheet' href='/css/site.css?v=2' type='text/css'/>
@@ -88,9 +88,9 @@ Its having your cake and eating it too
 Here is how you do it
 </p>
 
-<section id="outline-container-org5c3b1e8" class="outline-2">
-<h2 id="org5c3b1e8">Preparing for the mirroring</h2>
-<div class="outline-text-2" id="text-org5c3b1e8">
+<section id="outline-container-orgd59bce3" class="outline-2">
+<h2 id="orgd59bce3">Preparing for the mirroring</h2>
+<div class="outline-text-2" id="text-orgd59bce3">
 <p>
 First create an account @ codeberg.org
 </p>
@@ -141,27 +141,27 @@ Now clone the repo hosted on github
 </div>
 </section>
 
-<section id="outline-container-org4847b27" class="outline-2">
-<h2 id="org4847b27">Repository Mirroring</h2>
-<div class="outline-text-2" id="text-org4847b27">
+<section id="outline-container-org783d998" class="outline-2">
+<h2 id="org783d998">Repository Mirroring</h2>
+<div class="outline-text-2" id="text-org783d998">
 <p>
 There are 2 ways to do the mirroring
 </p>
 </div>
-<div id="outline-container-org162c67f" class="outline-3">
-<h3 id="org162c67f">Option 1: Via git command line</h3>
-<div class="outline-text-3" id="text-org162c67f">
+<div id="outline-container-org516212c" class="outline-3">
+<h3 id="org516212c">Option 1: Via git command line</h3>
+<div class="outline-text-3" id="text-org516212c">
 </div>
-<div id="outline-container-org7adad8c" class="outline-4">
-<h4 id="org7adad8c">Adding seperate remote for github and codeberg (Optional)</h4>
-<div class="outline-text-4" id="text-org7adad8c">
+<div id="outline-container-org9830182" class="outline-4">
+<h4 id="org9830182">Adding seperate remote for github and codeberg (Optional)</h4>
+<div class="outline-text-4" id="text-org9830182">
 <p>
 This is useful if you want to push specific changes to one service.
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org529ad0c"></a>Github<br />
-<div class="outline-text-5" id="text-org529ad0c">
+<li><a id="org46a7cf9"></a>Github<br />
+<div class="outline-text-5" id="text-org46a7cf9">
 <p>
 Replace user with your username and repo with the name of your repo if it isn&rsquo;t obvious aldready.
 </p>
@@ -174,8 +174,8 @@ If you prefer git via ssh you can use git@github.com:user/repo.git
 </p>
 </div>
 </li>
-<li><a id="org2c74c47"></a>Codeberg<br />
-<div class="outline-text-5" id="text-org2c74c47">
+<li><a id="org8b311c4"></a>Codeberg<br />
+<div class="outline-text-5" id="text-org8b311c4">
 <p>
 Replace user with your username and repo with the name of your repo if it isn&rsquo;t obvious aldready.
 </p>
@@ -188,8 +188,8 @@ If you prefer git via ssh you can use git@codeberg.org:user/repo.git
 </p>
 </div>
 </li>
-<li><a id="orgad78b41"></a>List the remotes<br />
-<div class="outline-text-5" id="text-orgad78b41">
+<li><a id="org9e1a54c"></a>List the remotes<br />
+<div class="outline-text-5" id="text-org9e1a54c">
 <p>
 For Seeing if the command succeeded, you can use the following command
 </p>
@@ -228,9 +228,9 @@ origin	<a href="https://github.com/user/repo.git">https://github.com/user/repo.g
 </li>
 </ul>
 </div>
-<div id="outline-container-org47e2cd9" class="outline-4">
-<h4 id="org47e2cd9">Adding codeberg to origin so it pushes to it too when we do git push</h4>
-<div class="outline-text-4" id="text-org47e2cd9">
+<div id="outline-container-org34adc1f" class="outline-4">
+<h4 id="org34adc1f">Adding codeberg to origin so it pushes to it too when we do git push</h4>
+<div class="outline-text-4" id="text-org34adc1f">
 <p>
 Right now when you do git push with no args, it will only push to github
 </p>
@@ -249,9 +249,9 @@ Now when you push it will push it to both codeberg and github
 </div>
 </div>
 </div>
-<div id="outline-container-org155fc8c" class="outline-3">
-<h3 id="org155fc8c">Option 2: Via git config file</h3>
-<div class="outline-text-3" id="text-org155fc8c">
+<div id="outline-container-orgd497f0c" class="outline-3">
+<h3 id="orgd497f0c">Option 2: Via git config file</h3>
+<div class="outline-text-3" id="text-orgd497f0c">
 <p>
 There is a file called config located in the .git directory of your repo
 </p>
@@ -276,7 +276,11 @@ and override the file with the following contents
 <p>
 Replace user with your username and repo with the name of your repo if it isn&rsquo;t obvious aldready.
 </p>
-<pre class="example" id="orgf6c0afc">
+<<<<<<< HEAD
+<pre class="example" id="org10662dd">
+=======
+<pre class="example" id="org048ae89">
+>>>>>>> dd6652647b45cade3ea75c50d2da8d17ccde8179
 [core]
     repositoryformatversion = 0
     filemode = true
@@ -302,9 +306,9 @@ Replace user with your username and repo with the name of your repo if it isn&rs
 </div>
 </section>
 
-<section id="outline-container-orgcad11f3" class="outline-2">
-<h2 id="orgcad11f3">Testing</h2>
-<div class="outline-text-2" id="text-orgcad11f3">
+<section id="outline-container-org071d740" class="outline-2">
+<h2 id="org071d740">Testing</h2>
+<div class="outline-text-2" id="text-org071d740">
 <p>
 Now comes the fun part, testing if it works
 </p>
@@ -318,9 +322,9 @@ Now check both codeberg and github and it should have updated
 </p>
 </div>
 </section>
-<section id="outline-container-org5b8fa29" class="outline-2">
-<h2 id="org5b8fa29">Problems</h2>
-<div class="outline-text-2" id="text-org5b8fa29">
+<section id="outline-container-org32ef0e6" class="outline-2">
+<h2 id="org32ef0e6">Problems</h2>
+<div class="outline-text-2" id="text-org32ef0e6">
 <p>
 If you have any issues with this, please <a href="mailto:aryakiran@zohomail.eu">email me</a> 
 </p>
@@ -332,7 +336,7 @@ If you have any issues with this, please <a href="mailto:aryakiran@zohomail.eu">
 <footer id="postamble" class="status">
 <div class='footer'>
 	<!--	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br> -->
-  Last updated on Jul 28, 2021. Generated using <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.6).
+  Last updated on Jul 29, 2021. Generated using <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.6).
 </div>
 </footer>
 </body>

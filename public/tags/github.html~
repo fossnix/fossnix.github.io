@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Jul 28, 2021 -->
+<!-- Jul 29, 2021 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About</title>
+<title>github</title>
 <meta name="generator" content="Org mode">
-<link rel='icon' type='image/x-icon' href='/images/favicon.ico'/>
+<meta name="author" content="Arya Kiran">
+<link rel='icon' type='image/x-icon' href='/images/favicon.jpg'/>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link rel='stylesheet' href='https://code.cdn.mozilla.net/fonts/fira.css'>
 <link rel='stylesheet' href='/css/site.css?v=2' type='text/css'/>
@@ -37,7 +38,7 @@
 </head>
 <body>
 <div id="org-div-home-and-up">
- <a accesskey="h" href="/"> UP </a>
+ <a accesskey="h" href="/tags"> UP </a>
  |
  <a accesskey="H" href="/"> HOME </a>
 </div><header id="top" class="status">
@@ -54,6 +55,7 @@
 <ul>
 <li><a href='/'>Blog</a>.</li>
 <!-- <li><a href='http://codeberg.org/aryak'>Codeberg</a>.</li>-->
+<li><a href='/tags/'>Tags</a>.</li>
 <li><a href='http://github.com/FOSSNIX'>GitHub</a>.</li>
 <li><a href='/index.xml'>RSS</a>.</li>
 <li><a href='/about/'>About</a></li>
@@ -62,19 +64,18 @@
 </header>
 <main id="content">
 <header>
-<h1 class="title">About</h1>
-</header><p>
-Hi, I&rsquo;m Arya and This is my blog
-</p>
-
-<p>
-Here I post lot of cool tech stuff
-</p>
+<h1 class="title">github</h1>
+</header><ul class="org-ul">
+<li><a href="../mirror-github-to-codeberg.html">Mirroring Github repos to Codeberg</a></li>
+<li><a href="../mirror-github-to-codeberg.html">Mirroring Github repos to Codeberg</a></li>
+<li><a href="../mirror-github-to-codeberg.html">Mirroring Github repos to Codeberg</a></li>
+<li><a href="../mirror-github-to-codeberg.html">Mirroring Github repos to Codeberg</a></li>
+</ul>
 </main>
 <footer id="postamble" class="status">
 <div class='footer'>
 	<!--	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br> -->
-  Last updated on Jul 28, 2021. Generated using <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.6).
+  Last updated on Jul 29, 2021. Generated using <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.6).
 </div>
 </footer>
 </body>
