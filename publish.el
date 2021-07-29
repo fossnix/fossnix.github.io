@@ -253,10 +253,10 @@ publishing directory. Returns output file name."
          :rss-extension "xml"
          :publishing-directory "./public"
          :publishing-function (org-rss-publish-to-rss)
-         :section-number t
+         :section-number nil
          :exclude ".*"
          :include ("index.org")
-         :table-of-contents t)
+         :table-of-contents nil)
         ("all" :components ("posts" "about" "tags" "css" "images" "assets" "rss"))))
 
 (provide 'publish)
