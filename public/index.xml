@@ -11,27 +11,27 @@
      xmlns:media="http://search.yahoo.com/mrss/"><channel>
   <title>Blog Index</title>
   <atom:link href="https://fossnix.netlify.app/index.xml" rel="self" type="application/rss+xml" />
-  <link>https://fossnix.netlify.app/</link>
+  <link>https://fossnix.netlify.app/</link><guid>https://fossnix.netlify.app/</guid>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Thu, 29 Jul 2021 11:00:07 +0530</pubDate>
-  <lastBuildDate>Thu, 29 Jul 2021 11:00:07 +0530</lastBuildDate>
+  <pubDate>Thu, 29 Jul 2021 11:23:37 +0530</pubDate>
+  <lastBuildDate>Thu, 29 Jul 2021 11:23:37 +0530</lastBuildDate>
   <generator>Emacs 27.2 Org-mode 9.4.6</generator>
   <webMaster>ak@laptop (Arya Kiran)</webMaster>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
     <title>Blog Index</title>
-    <link>https://fossnix.netlify.app/</link>
+    <link>https://fossnix.netlify.app/</link><guid>https://fossnix.netlify.app/</guid>
   </image>
 
-  <ul class="org-ul">
-    <li><p>
-      <b><a href="mirror-github-to-codeberg.html">Mirroring Github repos to Codeberg</a></b>
-    </p>
-    <p class='pubdate'>by Arya K on Jul 17, 2021.</p>
+  
+    <item>
+      <link>https://themrfantastic.gitlab.io/mirror-github-to-codeberg.html</link><guid>https://themrfantastic.gitlab.io/mirror-github-to-codeberg.html</guid><title>Mirroring Github repos to Codeberg</title>
+    
+    <p class='pubdate'>by Arya K on Jul 17, 2021.
     <p>
-      Tags: <i><a href="../tags/codeberg.html">codeberg</a>, <a href="../tags/git.html">git</a>, <a href="../tags/github.html">github</a></i>
-    </p></li>
-  </ul>
+      Tags: <i><link>https://themrfantastic.gitlab.io/../tags/codeberg.html">codeberg</a>, <link>https://themrfantastic.gitlab.io/../tags/git.html">git</a>, <link>https://themrfantastic.gitlab.io/../tags/github.html">github</a></i>
+    </pubDate></item>
+  
 </channel>
 </rss>

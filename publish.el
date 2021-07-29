@@ -1,5 +1,4 @@
 ;; publish.el --- Publish org-mode project on Gitlab Pages
-;; Author: Sachin Patil <psachin@redhat.com>
 
 ;;; Commentary:
 ;; This script will convert the org-mode files in this directory into
@@ -254,11 +253,79 @@ publishing directory. Returns output file name."
          :rss-extension "xml"
          :publishing-directory "./public"
          :publishing-function (org-rss-publish-to-rss)
-         :section-number nil
+         :section-number t
          :exclude ".*"
          :include ("index.org")
-         :table-of-contents nil)
+         :table-of-contents t)
         ("all" :components ("posts" "about" "tags" "css" "images" "assets" "rss"))))
 
 (provide 'publish)
+
+(defun fix-rss-feed-mrf ()
+  "docstr"
+ (let ((case-fold-search t)) ; or nil
+
+  (find-file "public/index.xml")
+  (goto-char (point-min))
+  (while (search-forward "<li>" nil t)
+    (replace-match "<item>"))
+
+  (goto-char (point-min))
+  (while (search-forward "</li>" nil t)
+    (replace-match "</item>"))
+
+  (goto-char (point-min))
+  (while (search-forward "<ul class=\"org-ul\">" nil t)
+    (replace-match ""))
+
+  (goto-char (point-min))
+  (while (search-forward "</ul>" nil t)
+    (replace-match ""))
+
+  (goto-char (point-min))
+  (while (search-forward "<b>" nil t)
+    (replace-match "<title>"))
+  (goto-char (point-min))
+  (while (search-forward "</b>" nil t)
+    (replace-match "</title>"))
+
+
+  (goto-char (point-min))
+  (while (search-forward "<p class='pubdate '>" nil t)
+    (replace-match "<pubDate>"))
+  (goto-char (point-min))
+  (while (search-forward "</p></item>" nil t)
+    (replace-match "</pubDate></item>"))
+  
+  (goto-char (point-min))
+  (while (search-forward "<item><p>" nil t)
+    (replace-match "<item>"))
+  (goto-char (point-min))
+  (while (search-forward "</p>" nil t)
+    (replace-match ""))
+
+  (goto-char (point-min))
+  (while (perform-replace "\\(<title>\\)\\(<a.*\".*\">\\)" "\\2</a>\\1" nil t nil))
+  (goto-char (point-min))
+  (while (search-forward "</a></title>" nil t)
+    (replace-match "</title>"))
+
+  (goto-char (point-min))
+  (while (search-forward "<a href=\"" nil t)
+    (replace-match "<a href=\"https://themrfantastic.gitlab.io/"))
+
+  (goto-char (point-min))
+  (while (search-forward "<a href=\"" nil t)
+    (replace-match "<link>"))
+  (goto-char (point-min))
+  (while (search-forward "\"></a>" nil t)
+    (replace-match "</link>"))
+
+  (goto-char (point-min))
+  (while (perform-replace "\\(<link\\)\\(>.*<\\)\\(/link>\\)" "\\1\\2\\3<guid\\2/guid>" nil t nil))
+  ;; repeat for other string pairs
+
+  (save-buffer)
+  (kill-buffer "index.xml")
+  ))
 ;;; publish.el ends here
