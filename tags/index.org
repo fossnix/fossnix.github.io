@@ -1,5 +1,0 @@
-#+TITLE: Tags
-
-- [[file:codeberg.org][codeberg]]
-- [[file:git.org][git]]
-- [[file:github.org][github]]
