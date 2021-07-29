@@ -22,10 +22,12 @@ publish: publish.el
 	@echo "Publishing... with current Emacs configurations."
 	${EMACS} --batch --load publish.el --funcall org-publish-all --funcall fix-rss-feed-mrf
 	bash rss.sh
+	rm -rf tags/
 publish_no_init: publish.el
 	@echo "Publishing... with --no-init."
 	${EMACS} --batch --no-init --load publish.el --funcall org-publish-all --funcall fix-rss-feed-mrf
 	bash rss.sh
+	rm -rf tags/
 clean:
 	@echo "Cleaning up.."
 	@rm -rvf *.elc
