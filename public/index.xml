@@ -14,8 +14,8 @@
   <link>https://fossnix.netlify.app/</link><guid>https://fossnix.netlify.app/</guid>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Thu, 29 Jul 2021 11:23:37 +0530</pubDate>
-  <lastBuildDate>Thu, 29 Jul 2021 11:23:37 +0530</lastBuildDate>
+  <pubDate>Thu, 29 Jul 2021 11:25:31 +0530</pubDate>
+  <lastBuildDate>Thu, 29 Jul 2021 11:25:31 +0530</lastBuildDate>
   <generator>Emacs 27.2 Org-mode 9.4.6</generator>
   <webMaster>ak@laptop (Arya Kiran)</webMaster>
   <image>
@@ -26,11 +26,11 @@
 
   
     <item>
-      <link>https://themrfantastic.gitlab.io/mirror-github-to-codeberg.html</link><guid>https://themrfantastic.gitlab.io/mirror-github-to-codeberg.html</guid><title>Mirroring Github repos to Codeberg</title>
+      <link>https://fossnix.netlify.app/mirror-github-to-codeberg.html</link><guid>https://fossnix.netlify.app/mirror-github-to-codeberg.html</guid><title>Mirroring Github repos to Codeberg</title>
     
     <p class='pubdate'>by Arya K on Jul 17, 2021.
     <p>
-      Tags: <i><link>https://themrfantastic.gitlab.io/../tags/codeberg.html">codeberg</a>, <link>https://themrfantastic.gitlab.io/../tags/git.html">git</a>, <link>https://themrfantastic.gitlab.io/../tags/github.html">github</a></i>
+      Tags: <i><link>https://fossnix.netlify.app/../tags/codeberg.html">codeberg</a>, <link>https://fossnix.netlify.app/../tags/git.html">git</a>, <link>https://fossnix.netlify.app/../tags/github.html">github</a></i>
     </pubDate></item>
   
 </channel>

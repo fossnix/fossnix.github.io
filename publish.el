@@ -312,7 +312,7 @@ publishing directory. Returns output file name."
 
   (goto-char (point-min))
   (while (search-forward "<a href=\"" nil t)
-    (replace-match "<a href=\"https://themrfantastic.gitlab.io/"))
+    (replace-match "<a href=\"https://fossnix.netlify.app/"))
 
   (goto-char (point-min))
   (while (search-forward "<a href=\"" nil t)
