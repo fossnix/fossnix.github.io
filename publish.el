@@ -9,6 +9,7 @@
 (package-initialize)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-refresh-contents)
 (package-install 'htmlize)
 (package-install 'org-plus-contrib)
 (package-install 'ox-reveal)
@@ -49,6 +50,7 @@
 <link rel='stylesheet' href='https://code.cdn.mozilla.net/fonts/fira.css'>
 <link rel='stylesheet' href='/css/site.css?v=2' type='text/css'/>
 <link rel='stylesheet' href='/css/custom.css' type='text/css'/>
+<link rel='stylesheet' href='/css/dracula.css' type='text/css'/>
 <link rel='stylesheet' href='/css/syntax-coloring.css' type='text/css'/>")
 
 (defun me/org-html-publish-to-html (plist filename pubdir)
