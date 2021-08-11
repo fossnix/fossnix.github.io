@@ -2,6 +2,7 @@
 #+date: <%<%Y-%m-%d>>
 #+setupfile: ../org-templates/post.org
 #+filetags: %^{Tags}
+
 %?
 
 #+INCLUDE: "../disquss.inc"

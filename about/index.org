@@ -1,6 +1,8 @@
 #+title: About
 #+filetags: about
 
-Hi, I'm Arya and This is my blog
+This is fossnix.
 
-Here I post lot of cool tech stuff
+Here we post articles about GNU+Linux, Shell, and emacs
+
+We also have a github where we have multiple
