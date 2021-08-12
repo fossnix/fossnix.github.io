@@ -2,6 +2,7 @@
 #+date: <2021-08-11>
 #+setupfile: ../org-templates/post.org
 #+filetags: gpg encryption privacy security cryptography
+#+OPTIONS: num:t
 * Introduction
 
 In this tutorial, I will show you guys how to use gpg
@@ -60,7 +61,7 @@ Note: Replace name with a valid algorithm. You can find out valid algorithm name
 ** Encryption of Files with GPG
 We can encrypt a file as a gpg (~.gpg~) file or as an ASCII (~.asc~) file.
 
-For more info look at this [[https://www.linuxjournal.com/files/linuxjournal.com/linuxjournal/articles/048/4892/4892s2.html][article from the linux journal]]
+For more info look at this [[https://www.linuxjournal.com/files/linuxjournal.com/linuxjournal/articles/048/4892/4892s2.html][excerpt from the linux journal]]
 
 You can encrypt with the following command
 

@@ -71,8 +71,8 @@
 <span class="subtitle">Published on Aug 11, 2021 by Arya Kiran.</span>
 </h1>
 <section id="outline-container-org2f7cb24" class="outline-2">
-<h2 id="org2f7cb24">Introduction</h2>
-<div class="outline-text-2" id="text-org2f7cb24">
+<h2 id="org2f7cb24"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 In this tutorial, I will show you guys how to use gpg
 </p>
@@ -99,8 +99,8 @@ There are 2 types of encryption symmetric and asymmetric and GNUPG supports both
 </div>
 
 <div id="outline-container-org5adeffe" class="outline-3">
-<h3 id="org5adeffe">Installation</h3>
-<div class="outline-text-3" id="text-org5adeffe">
+<h3 id="org5adeffe"><span class="section-number-3">1.1.</span> Installation</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
 GNUPG is on most linux distro&rsquo;s main repos usually under the name of gnupg or gnupg-utils
 </p>
@@ -108,24 +108,24 @@ GNUPG is on most linux distro&rsquo;s main repos usually under the name of gnupg
 </div>
 
 <div id="outline-container-org3695816" class="outline-3">
-<h3 id="org3695816">Setting variables</h3>
-<div class="outline-text-3" id="text-org3695816">
+<h3 id="org3695816"><span class="section-number-3">1.2.</span> Setting variables</h3>
+<div class="outline-text-3" id="text-1-2">
 </div>
 <div id="outline-container-org759173d" class="outline-4">
-<h4 id="org759173d">X11</h4>
-<div class="outline-text-4" id="text-org759173d">
+<h4 id="org759173d"><span class="section-number-4">1.2.1.</span> X11</h4>
+<div class="outline-text-4" id="text-1-2-1">
 <p>
 When using GnuPG under X11, I have noticed that GNUPG doesn&rsquo;t work without setting this variable in your .bashrc
 </p>
 
-<pre class="example" id="org832ff89">
+<pre class="example" id="orgbaa5b9e">
 export GPG_TTY=$(tty)
 </pre>
 </div>
 </div>
 <div id="outline-container-org4f11181" class="outline-4">
-<h4 id="org4f11181">XDG Compliance</h4>
-<div class="outline-text-4" id="text-org4f11181">
+<h4 id="org4f11181"><span class="section-number-4">1.2.2.</span> XDG Compliance</h4>
+<div class="outline-text-4" id="text-1-2-2">
 <p>
 GPG stores its data in <code>~/.gnupg</code> by default.
 </p>
@@ -134,7 +134,7 @@ GPG stores its data in <code>~/.gnupg</code> by default.
 If you want GPG to store its data in a XDG compliant directory, you can set this variable in your .bash<sub>profile</sub>
 </p>
 
-<pre class="example" id="org156798a">
+<pre class="example" id="org99e1b7a">
 export GNUPGHOME="$HOME/.local/share/gnupg"
 </pre>
 </div>
@@ -143,8 +143,8 @@ export GNUPGHOME="$HOME/.local/share/gnupg"
 </section>
 
 <section id="outline-container-org3ba8076" class="outline-2">
-<h2 id="org3ba8076">Symmetric Encryption</h2>
-<div class="outline-text-2" id="text-org3ba8076">
+<h2 id="org3ba8076"><span class="section-number-2">2.</span> Symmetric Encryption</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 Symmetric encryption is the type of encryption most of us use on a daily basis.
 </p>
@@ -175,8 +175,8 @@ GPG also supports 3DES, IDEA (since versions 1.4.13 and 2.0.20), CAST5, Blowfish
 </div>
 
 <div id="outline-container-orged0971e" class="outline-3">
-<h3 id="orged0971e">Specifying Encryption Algorithm</h3>
-<div class="outline-text-3" id="text-orged0971e">
+<h3 id="orged0971e"><span class="section-number-3">2.1.</span> Specifying Encryption Algorithm</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
 GPG uses AES-128 by default, but you can change it by using the <code>--cipher-algo name</code> flag.
 </p>
@@ -192,8 +192,8 @@ Note: Replace name with a valid algorithm. You can find out valid algorithm name
 </div>
 
 <div id="outline-container-org63db1ca" class="outline-3">
-<h3 id="org63db1ca">Encryption of Files with GPG</h3>
-<div class="outline-text-3" id="text-org63db1ca">
+<h3 id="org63db1ca"><span class="section-number-3">2.2.</span> Encryption of Files with GPG</h3>
+<div class="outline-text-3" id="text-2-2">
 <p>
 We can encrypt a file as a gpg (<code>.gpg</code>) file or as an ASCII (<code>.asc</code>) file.
 </p>
@@ -209,7 +209,7 @@ You can encrypt with the following command
 <p>
 Both the commands shown here will do the same thing.
 </p>
-<pre class="example" id="org88e5ae3">
+<pre class="example" id="org341e3b5">
 gpg --output file.gpg --symmetric file
 
 gpg -o file.gpg -c file
@@ -225,13 +225,13 @@ If you want to hard-code the passphrase prepend <code>--passphrase "p@$$w0rd"</c
 </div>
 </div>
 <div id="outline-container-orgd8546b3" class="outline-3">
-<h3 id="orgd8546b3">Decryption of files with GPG</h3>
-<div class="outline-text-3" id="text-orgd8546b3">
+<h3 id="orgd8546b3"><span class="section-number-3">2.3.</span> Decryption of files with GPG</h3>
+<div class="outline-text-3" id="text-2-3">
 <p>
 To decrypt an encrypted file, use
 </p>
 
-<pre class="example" id="orgfb2c1b6">
+<pre class="example" id="org5137cc8">
 gpg -o file.txt -d file.txt.gpg
 
 gpg --output file.txt --decrypt file.txt.gpg

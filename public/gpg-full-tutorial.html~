@@ -118,7 +118,7 @@ GNUPG is on most linux distro&rsquo;s main repos usually under the name of gnupg
 When using GnuPG under X11, I have noticed that GNUPG doesn&rsquo;t work without setting this variable in your .bashrc
 </p>
 
-<pre class="example" id="orgdee18a6">
+<pre class="example" id="org832ff89">
 export GPG_TTY=$(tty)
 </pre>
 </div>
@@ -134,7 +134,7 @@ GPG stores its data in <code>~/.gnupg</code> by default.
 If you want GPG to store its data in a XDG compliant directory, you can set this variable in your .bash<sub>profile</sub>
 </p>
 
-<pre class="example" id="org5550839">
+<pre class="example" id="org156798a">
 export GNUPGHOME="$HOME/.local/share/gnupg"
 </pre>
 </div>
@@ -158,7 +158,7 @@ The most popular symmetric encryption algorithm is <a href="https://en.wikipedia
 </p>
 
 <p>
-It was developed by two Belgian Cryptographers (Joan Daemen and Vincent Rijmen) under the name of Rijndael.
+It was developed by two Belgian Cryptographers (Joan Daemen and Vincent Rijmen) under the code name of Rijndael.
 </p>
 
 <p>
@@ -182,7 +182,7 @@ GPG uses AES-128 by default, but you can change it by using the <code>--cipher-a
 </p>
 
 <p>
-If you want it to persist add <code>cipher-algo name</code> to $GNUPGHOME/gpg.conf
+If you want it to persist add <code>cipher-algo name</code> to <code>$GNUPGHOME/gpg.conf</code>
 </p>
 
 <p>
@@ -190,8 +190,6 @@ Note: Replace name with a valid algorithm. You can find out valid algorithm name
 </p>
 </div>
 </div>
-
-
 
 <div id="outline-container-org63db1ca" class="outline-3">
 <h3 id="org63db1ca">Encryption of Files with GPG</h3>
@@ -211,7 +209,7 @@ You can encrypt with the following command
 <p>
 Both the commands shown here will do the same thing.
 </p>
-<pre class="example" id="org414c817">
+<pre class="example" id="org88e5ae3">
 gpg --output file.gpg --symmetric file
 
 gpg -o file.gpg -c file
@@ -233,9 +231,15 @@ If you want to hard-code the passphrase prepend <code>--passphrase "p@$$w0rd"</c
 To decrypt an encrypted file, use
 </p>
 
-<pre class="example" id="org2794f11">
-gpg
+<pre class="example" id="orgfb2c1b6">
+gpg -o file.txt -d file.txt.gpg
+
+gpg --output file.txt --decrypt file.txt.gpg
 </pre>
+
+<p>
+Without the output option the contents would be printed to stdout
+</p>
 </div>
 </div>
 </section>
