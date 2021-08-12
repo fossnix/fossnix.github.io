@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- Aug 12, 2021 -->
+<!-- Aug 09, 2021 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mirroring Github repos to Codeberg</title>
@@ -90,9 +90,9 @@ Its having your cake and eating it too
 Here is how you do it
 </p>
 
-<section id="outline-container-orgfdaefec" class="outline-2">
-<h2 id="orgfdaefec">Preparing for the mirroring</h2>
-<div class="outline-text-2" id="text-orgfdaefec">
+<section id="outline-container-org88b5ca4" class="outline-2">
+<h2 id="org88b5ca4">Preparing for the mirroring</h2>
+<div class="outline-text-2" id="text-org88b5ca4">
 <p>
 First create an account @ codeberg.org
 </p>
@@ -143,27 +143,27 @@ Now clone the repo hosted on github
 </div>
 </section>
 
-<section id="outline-container-org511e7ef" class="outline-2">
-<h2 id="org511e7ef">Repository Mirroring</h2>
-<div class="outline-text-2" id="text-org511e7ef">
+<section id="outline-container-org5a7f92f" class="outline-2">
+<h2 id="org5a7f92f">Repository Mirroring</h2>
+<div class="outline-text-2" id="text-org5a7f92f">
 <p>
 There are 2 ways to do the mirroring
 </p>
 </div>
-<div id="outline-container-org65ad788" class="outline-3">
-<h3 id="org65ad788">Option 1: Via git command line</h3>
-<div class="outline-text-3" id="text-org65ad788">
+<div id="outline-container-orgf2bdfc1" class="outline-3">
+<h3 id="orgf2bdfc1">Option 1: Via git command line</h3>
+<div class="outline-text-3" id="text-orgf2bdfc1">
 </div>
-<div id="outline-container-orgaff41d9" class="outline-4">
-<h4 id="orgaff41d9">Adding seperate remote for github and codeberg (Optional)</h4>
-<div class="outline-text-4" id="text-orgaff41d9">
+<div id="outline-container-orgbc79d75" class="outline-4">
+<h4 id="orgbc79d75">Adding seperate remote for github and codeberg (Optional)</h4>
+<div class="outline-text-4" id="text-orgbc79d75">
 <p>
 This is useful if you want to push specific changes to one service.
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org563d107"></a>Github<br />
-<div class="outline-text-5" id="text-org563d107">
+<li><a id="orgb201506"></a>Github<br />
+<div class="outline-text-5" id="text-orgb201506">
 <p>
 Replace user with your username and repo with the name of your repo if it isn&rsquo;t obvious aldready.
 </p>
@@ -176,8 +176,8 @@ If you prefer git via ssh you can use git@github.com:user/repo.git
 </p>
 </div>
 </li>
-<li><a id="org5ec233a"></a>Codeberg<br />
-<div class="outline-text-5" id="text-org5ec233a">
+<li><a id="org7e6b788"></a>Codeberg<br />
+<div class="outline-text-5" id="text-org7e6b788">
 <p>
 Replace user with your username and repo with the name of your repo if it isn&rsquo;t obvious aldready.
 </p>
@@ -190,8 +190,8 @@ If you prefer git via ssh you can use git@codeberg.org:user/repo.git
 </p>
 </div>
 </li>
-<li><a id="org7a8ddb1"></a>List the remotes<br />
-<div class="outline-text-5" id="text-org7a8ddb1">
+<li><a id="org5dcbf0f"></a>List the remotes<br />
+<div class="outline-text-5" id="text-org5dcbf0f">
 <p>
 For Seeing if the command succeeded, you can use the following command
 </p>
@@ -230,9 +230,9 @@ origin	<a href="https://github.com/user/repo.git">https://github.com/user/repo.g
 </li>
 </ul>
 </div>
-<div id="outline-container-org52c72b1" class="outline-4">
-<h4 id="org52c72b1">Adding codeberg to origin so it pushes to it too when we do git push</h4>
-<div class="outline-text-4" id="text-org52c72b1">
+<div id="outline-container-org0458177" class="outline-4">
+<h4 id="org0458177">Adding codeberg to origin so it pushes to it too when we do git push</h4>
+<div class="outline-text-4" id="text-org0458177">
 <p>
 Right now when you do git push with no args, it will only push to github
 </p>
@@ -251,9 +251,9 @@ Now when you push it will push it to both codeberg and github
 </div>
 </div>
 </div>
-<div id="outline-container-orgf574d53" class="outline-3">
-<h3 id="orgf574d53">Option 2: Via git config file</h3>
-<div class="outline-text-3" id="text-orgf574d53">
+<div id="outline-container-org7191c13" class="outline-3">
+<h3 id="org7191c13">Option 2: Via git config file</h3>
+<div class="outline-text-3" id="text-org7191c13">
 <p>
 There is a file called config located in the .git directory of your repo
 </p>
@@ -278,7 +278,7 @@ and override the file with the following contents
 <p>
 Replace user with your username and repo with the name of your repo if it isn&rsquo;t obvious aldready.
 </p>
-<pre class="example" id="org5438f07">
+<pre class="example" id="orgb9265f9">
 [core]
     repositoryformatversion = 0
     filemode = true
@@ -304,9 +304,9 @@ Replace user with your username and repo with the name of your repo if it isn&rs
 </div>
 </section>
 
-<section id="outline-container-orgc371599" class="outline-2">
-<h2 id="orgc371599">Testing</h2>
-<div class="outline-text-2" id="text-orgc371599">
+<section id="outline-container-org02ebafe" class="outline-2">
+<h2 id="org02ebafe">Testing</h2>
+<div class="outline-text-2" id="text-org02ebafe">
 <p>
 Now comes the fun part, testing if it works
 </p>
@@ -320,21 +320,21 @@ Now check both codeberg and github and it should have updated
 </p>
 </div>
 </section>
-<section id="outline-container-orgbeeaa78" class="outline-2">
-<h2 id="orgbeeaa78">Problems</h2>
-<div class="outline-text-2" id="text-orgbeeaa78">
+<section id="outline-container-org56a1526" class="outline-2">
+<h2 id="org56a1526">Problems</h2>
+<div class="outline-text-2" id="text-org56a1526">
 <p>
 If you have any issues with this, please <a href="mailto:aryakiran@zohomail.eu">email me</a> 
 </p>
 
-<div id="HCB_comment_box">-<a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>  <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" /> <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24.0WYnR7CBBV5ruABxgEC.%2F"+"&opts=16798&num=10&ts=1626511120600");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+<br> <div id="HCB_comment_box">-<a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>  <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" /> <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24.0WYnR7CBBV5ruABxgEC.%2F"+"&opts=16798&num=10&ts=1626511120600");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
 </div>
 </section>
 </main>
 <footer id="postamble" class="status">
 <div class='footer'>
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br> -->
-  Last updated on Aug 12, 2021. Generated using <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.6).
+  Last updated on Aug 09, 2021. Generated using <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.6).
 </div>
 </footer>
 </body>

@@ -1,0 +1,8 @@
+#+title: Test2
+#+date: <2021-08-11>
+#+setupfile: ../org-templates/post.org
+#+filetags: test test test
+
+fgsdjkgsdfg
+
+#+INCLUDE: "../disquss.inc"
