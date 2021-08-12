@@ -2,16 +2,85 @@
 #+date: <2021-08-11>
 #+setupfile: ../org-templates/post.org
 #+filetags: gpg encryption privacy security cryptography
-#+toc: true
+* Introduction
+
 In this tutorial, I will show you guys how to use gpg
 
 GPG is a program used for encryption and decryption of files
 
 It is fully libre and is part of the [[http://gnu.org][GNU Project]]
 
+GPG doesn't support any non-free encryption algorithms.
+
 We will be diving into how to use it in this tutorial
 
 There are 2 types of encryption symmetric and asymmetric and GNUPG supports both.
 
+** Installation
+GNUPG is on most linux distro's main repos usually under the name of gnupg or gnupg-utils
 
-#+INCLUDE: "../disquss.inc"
+** Setting variables
+*** X11
+When using GnuPG under X11, I have noticed that GNUPG doesn't work without setting this variable in your .bashrc
+
+#+begin_example
+export GPG_TTY=$(tty)
+#+end_example
+*** XDG Compliance
+GPG stores its data in =~/.gnupg= by default.
+
+If you want GPG to store its data in a XDG compliant directory, you can set this variable in your .bash_profile
+
+#+begin_example
+export GNUPGHOME="$HOME/.local/share/gnupg"
+#+end_example
+
+* Symmetric Encryption
+Symmetric encryption is the type of encryption most of us use on a daily basis.
+
+It is simple. There is a key (usually a passphrase) and only people with the key can decrypt it
+
+The most popular symmetric encryption algorithm is [[https://en.wikipedia.org/wiki/Advanced_Encryption_Standard][AES]]
+
+It was developed by two Belgian Cryptographers (Joan Daemen and Vincent Rijmen) under the code name of Rijndael.
+
+It was released in 1998 and made a standard by the [[https://nist.gov][U.S. National Institute of Standards and Technology (NIST)]] in 2001
+
+The National Security Agency (NSA), as well as many other governmental bodies, utilize AES encryption and keys to protect classified or other sensitive information.
+
+GPG also supports 3DES, IDEA (since versions 1.4.13 and 2.0.20), CAST5, Blowfish, Twofish and Camellia-128 as options for symmetric encryption but most of them aren't as secure as AES
+
+** Specifying Encryption Algorithm
+GPG uses AES-128 by default, but you can change it by using the ~--cipher-algo name~ flag.
+
+If you want it to persist add ~cipher-algo name~ to ~$GNUPGHOME/gpg.conf~
+
+Note: Replace name with a valid algorithm. You can find out valid algorithm names by executing gpg with the flag ~--version~. It will show the list under =Cipher:=
+
+** Encryption of Files with GPG
+We can encrypt a file as a gpg (~.gpg~) file or as an ASCII (~.asc~) file.
+
+For more info look at this [[https://www.linuxjournal.com/files/linuxjournal.com/linuxjournal/articles/048/4892/4892s2.html][article from the linux journal]]
+
+You can encrypt with the following command
+
+Both the commands shown here will do the same thing.
+#+begin_example sh
+ gpg --output file.gpg --symmetric file
+
+ gpg -o file.gpg -c file
+#+end_example
+
+If you want the file to be ASCII Armored, prepend the ~-a~ or ~--armor~ flag.
+
+If you want to hard-code the passphrase prepend ~--passphrase "p@$$w0rd"~
+** Decryption of files with GPG
+To decrypt an encrypted file, use
+
+#+begin_example sh
+gpg -o file.txt -d file.txt.gpg
+
+gpg --output file.txt --decrypt file.txt.gpg
+#+end_example
+
+Without the output option the contents would be printed to stdout
