@@ -1,0 +1,38 @@
+#+title: Windows applications on Linux
+#+date: Tue Aug 31 22:46:28 2021
+
+* Before anything..
+For most programs you should use *wine*, but some microsoft specific programs there's only two ways:
+- dual boot
+- virtual machine
+Both of these options are similiar in a way that you have to *boot* windows, rather than just opening a program.
+So keep in mind that you will need some ram space and cpu power.
+# todo, add a ss and narrow the ram/cpu usage down
+In my case having windows virtual machine on the background, using /MicrosoftSQL/ with the remote desktop protocol and the /brave/ browser with google meet open results around 4gb and at max one cpu at 100%.
+* Setting up a windows virtual machine
+On this example I will be using [[http://virtualbox.org][VirtualBox]], but you can use an already create
+virtual machine on whatever software you use, if you know what you are doing.
+
+** Windows with no internet
+This is the way I have it set up, which is optional but I can save bandwidth and
+more important prevent updates and pinging to the VM. Since we need the
+'computers' (host - guest) connected we will need to make a new /Host connection/
+or at least that's what virtual box calls it.
+
+
+/I'm sure this is possible on other software like KVM or even outside the/
+/virtual machines, but those options are too advance./
+
+# steps with pics
+
+*  Linux setup
+You will need /xfreerdp/ package:
+
+
+On Arch based systems
+: # pacman -Sy freerdp
+
+On Debian/Ubuntu based systems
+: # apt get install freerdp2
+
+Consult the documentation of your distribution..
