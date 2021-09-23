@@ -1,18 +1,21 @@
 #+title: Windows applications on Linux
 #+date: Tue Aug 31 22:46:28 2021
+#+startup: overview
 
 * Before anything..
-For most programs you should use *wine*, but some microsoft specific programs there's only two ways:
-- dual boot
-- virtual machine
+For most programs you should use *wine*, but for microsoft specific programs (i.g. Office 365) there's only two ways:
++ dual boot
++ virtual machine
 Both of these options are similiar in a way that you have to *boot* windows, rather than just opening a program.
 So keep in mind that you will need some ram space and cpu power.
+#+CAPTION:Using excel while working on a C program
+[[file:../images/posts/windows-apps/excel.png]]
 # todo, add a ss and narrow the ram/cpu usage down
-In my case having windows virtual machine on the background, using /MicrosoftSQL/ with the remote desktop protocol and the /brave/ browser with google meet open results around 4gb and at max one cpu at 100%.
+In my case having windows virtual machine on the background, using /MicrosoftSQL/  (or any Office program) with the remote desktop protocol and the /brave/ browser with google meet open results around 4gb and at max one cpu at 100%.
 * Setting up a windows virtual machine
 On this example I will be using [[http://virtualbox.org][VirtualBox]], but you can use an already create
 virtual machine on whatever software you use, if you know what you are doing.
-
+/Note/: A password for the user is required.
 ** Windows with no internet
 This is the way I have it set up, which is optional but I can save bandwidth and
 more important prevent updates and pinging to the VM. Since we need the
@@ -25,7 +28,8 @@ or at least that's what virtual box calls it.
 
 # steps with pics
 
-*  Linux setup
+* Linux (host) setup
+** Installing freerdp
 You will need /xfreerdp/ package:
 
 
@@ -36,3 +40,12 @@ On Debian/Ubuntu based systems
 : # apt get install freerdp2
 
 Consult the documentation of your distribution..
+** Connecting to the virtual machine
+First, start up the virtual machine. I use the command below on virtualbox (or use the gui).
+: /usr/lib/virtualbox/VBoxHeadless --comment VMNAME --startvm VMNUMBER --vrde config
+I believe you can see the ~VMNUMBER~ on the info about the box. After this the virtual machine will run in the background.
+
+
+After that we can finally use freerdp. For example to run excel 2016, I do:
+: xfreerdp /v:IP /u:linus /p:passwd /app:"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel 2016"
+Now the ~/app~ path it's the non-constant variable. ~/v~ most of the time you want it fixed (non DHCP) and the ~/u~ user and ~/p~ password as well.
