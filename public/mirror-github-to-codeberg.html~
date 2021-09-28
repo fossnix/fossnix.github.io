@@ -278,7 +278,7 @@ and override the file with the following contents
 <p>
 Replace user with your username and repo with the name of your repo if it isn&rsquo;t obvious aldready.
 </p>
-<pre class="example" id="org03f6f05">
+<pre class="example" id="org9812aa1">
 [core]
     repositoryformatversion = 0
     filemode = true

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Aug 09, 2021 -->
+<!-- Aug 12, 2021 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About</title>
@@ -67,17 +67,21 @@
 <header>
 <h1 class="title">About</h1>
 </header><p>
-Hi, I&rsquo;m Arya and This is my blog
+This is fossnix.
 </p>
 
 <p>
-Here I post lot of cool tech stuff
+Here we post articles about GNU+Linux, Shell, and emacs
+</p>
+
+<p>
+We also have a github where we have multiple
 </p>
 </main>
 <footer id="postamble" class="status">
 <div class='footer'>
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br> -->
-  Last updated on Aug 09, 2021. Generated using <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.6).
+  Last updated on Aug 12, 2021. Generated using <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.4.6).
 </div>
 </footer>
 </body>
