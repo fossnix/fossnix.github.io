@@ -16,4 +16,7 @@
 <li><a href='/index.xml'>RSS</a>.</li>
 <li><a href='/about/'>About</a></li>
 </ul>
+<form onsubmit='javascript: document.getElementById("q").value+=" site:"+window.location.hostname;' action='https://www.google.com/search' method='GET'>
+<input name='q' id='q'/><input type='submit' value='Search'/>
+</form>
 </div>
