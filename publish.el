@@ -6,10 +6,16 @@
 
 ;;; Code:
 (require 'package)
+(setq package-user-dir (expand-file-name "./.packages"))
+(setq package-archives '(("org" . "https://orgmode.org/elpa/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+;; Initialize the package system
 (package-initialize)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-refresh-contents)
+(unless package-archive-contents
+  (package-refresh-contents))
+
 (package-install 'htmlize)
 (package-install 'org-plus-contrib)
 (package-install 'ox-reveal)
@@ -277,7 +283,7 @@ publishing directory. Returns output file name."
 (provide 'publish)
 
 (defun fix-rss-feed-mrf ()
-  "docstr"
+  "Rss is broken by default."
  (let ((case-fold-search t)) ; or nil
 
   (find-file "public/index.xml")
