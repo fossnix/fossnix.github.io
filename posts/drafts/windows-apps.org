@@ -4,21 +4,24 @@
 #+startup: overview
 #+setupfile: ../org-templates/post.org
 * Before anything..
-For most programs you should use [[https://winehq.org][wine]], but for microsoft specific programs (i.g. Office 365) there's only two ways:
+For most programs you should use [[https://winehq.org][wine]], but for microsoft specific programs (i.g. Office 365) or programs that don't support wine there's only two ways:
 + dual boot
 + virtual machine
 Both of these options are similiar in a way that you have to *boot* windows, rather than just opening a program.
+
 So keep in mind that you will need some ram space and cpu power.
 #+CAPTION:Using excel while working on a C program
-[[file:..//images/posts/windows-apps/excel.png]]
+[[../../images/posts/windows-apps/excel.png]]
 # todo, add a ss and narrow the ram/cpu usage down
 In my case having windows virtual machine on the background, using /MicrosoftSQL/  (or any Office program) with the remote desktop protocol and the /brave/ browser with google meet open results around 4gb and at max one cpu at 100%.
 * Setting up a windows virtual machine
 On this example I will be using [[http://virtualbox.org][VirtualBox]], but you can use an already create
 virtual machine on whatever software you use, if you know what you are doing.
+
 /Note/: A password for the user is required.
 ** Steps
 First thing is to install virtualbox. It is in almost all distro's repos.
+
 /Note: some distros like voidlinux use the old/ ~virtualbox-ose~ /name./
 *** Creating the VM
 After opening the GUI,
@@ -26,70 +29,106 @@ After opening the GUI,
 #+DOWNLOADED: screenshot @ 2021-09-28 18:32:34
 #+attr_org: :width 200px
 [[file:Setting_up_a_windows_virtual_machine/2021-09-28_18-32-34_screenshot.png]]
+
 Click new
 
 #+DOWNLOADED: screenshot @ 2021-09-28 18:35:46
 #+attr_org: :width 500px
 [[file:Setting_up_a_windows_virtual_machine/2021-09-28_18-35-46_screenshot.png]]
+
 Here you can use whatever name you want.
+
 Just make sure its descriptive so that you dont confuse it with other VMs.
+
 The Version should be *Windows 10 64Bit*
+
 Most computers are 64bit and you dont want to be playing with 32bit emulation. Believe me.
 
 #+DOWNLOADED: screenshot @ 2021-09-28 18:41:51
 #+attr_org: :width 500px
 [[file:Setting_up_a_windows_virtual_machine/2021-09-28_18-41-51_screenshot.png]]
+
 The RAM should be adequate. Windows is a sihtty OS as we all know and consumes atleast 2gigs for itself.
+
 If you are going to only be running Office 365 etc. it shouldn't matter.
+
 Office365 recommends 2Gigs so i would suggest 3 gigs just to be safe.
+
 We would be debloating windows in the next part of the article so RAM shouldn't be an issue.
+
 Make sure you have atleast $\frac{1}{2}$ of your RAM for your host.
+
 For Hard Disk File Type you can go with any of them. It doesn't matter.
 
 #+DOWNLOADED: screenshot @ 2021-09-28 18:51:35
 #+attr_org: :width 500px
 [[file:Setting_up_a_windows_virtual_machine/2021-09-28_18-51-35_screenshot.png]]
+
 This doesn't matter either but I recommend Dynamically Allocated as you can make the disk bigger if you run out of space.
+
 I would suggest allocating 32 gigs of storage for the VM.
+
 Microsoft suggests 20Gb for 64bit.
+
 Office 365 needs 5gigs too.
+
 Now is a good time to get your Windows ISO.
+
 I like windows ame but if you arent comfortable with torrenting from telegram you can get the default iso too.
+
 It doesn't matter.
 ** Configuring the VM
 Now we need to go to Windows VM -> Settings -> Storage
 
 #+DOWNLOADED: screenshot @ 2021-09-28 20:39:23
 [[file:Setting_up_a_windows_virtual_machine/2021-09-28_20-39-23_screenshot.png]]
+
 Now click Choose a disk file and select the windows iso
+
 Virtualbox uses NAT by default. This means the server wont be accessible outside of the host.
+
 I usually prefer Bridged tho.
+
 If you don't wanna give windows access to internet at all, use a host-only adapter.
+
 /Note: We are running the vm in legacy bios. It is easier and a little faster. If you are using Windows 11, UEFI is necessary./
+
 Now you can setup Windows like normal.
+
 You don't neet to have a license key for windows.
 
 #+DOWNLOADED: screenshot @ 2021-09-28 20:46:38
 [[file:Setting_up_a_windows_virtual_machine/2021-09-28_20-46-38_screenshot.png]]
+
 Now we need to unmount the iso
 
 #+DOWNLOADED: screenshot @ 2021-09-28 22:05:58
 [[file:Setting_up_a_windows_virtual_machine/2021-09-28_22-05-58_screenshot.png]]
 
 Then if you restart the VM, You should boot right into windows.
+
 Do the initial setup and shutdown the VM
+
 /Note: The performance for now will be choppy. That is because we havent installed guest additions yet./
 
 #+DOWNLOADED: screenshot @ 2021-09-28 22:23:27
 [[file:Setting_up_a_windows_virtual_machine/2021-09-28_22-23-27_screenshot.png]]
 Add a new CD.
+
 In the new menu that appears chose 'Leave Empty'.
+
 Now start the VM.
+
 In the VM Toolbar choose Devices -> Insert Guest Additions CD Image.
+
 Now in Windows, click on the new CD drive in This PC and then run vboxguestadditions.exe as admin.
+
 After that reboot.
+
 Now you can run your debloater of choice.
+
 I recommend [[https://christitus.com/debloat-windows-10-2020][Chris Titus Tech's one]].
+
 Now you can install all your favourite windows only applications.
 * Linux (host) setup
 ** Installing freerdp
