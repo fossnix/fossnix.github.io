@@ -2,7 +2,7 @@
 #+date: <2021-09-28 Tue>
 #+filetags: msoffice windows linux
 #+startup: overview
-#+setupfile: ../org-templates/post.org
+#+setupfile: ../../org-templates/post.org
 #+AUTHOR: Explosion Mental ( Edited by Arya )
 * Before anything..
 For most programs you should use [[https://winehq.org][wine]], but for microsoft specific programs (i.g. Office 365) or programs that don't support wine there's only two ways:
