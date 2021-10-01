@@ -9,15 +9,16 @@
 
 ; Set up melpa package repository
 (require 'package)
-(setq package-enable-at-startup nil)
-(add-to-list 'package-archives
-	 '("org" . "https://orgmode.org/elpa/"))
-(add-to-list 'package-archives
-         '("gnu" . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives
-         '("melpa" . "https://melpa.org/packages/"))
+(setq package-user-dir (expand-file-name "./.packages"))
+(setq package-archives '(("org" . "https://orgmode.org/elpa/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
+;; Initialize the package system
 (package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
 (package-install 'htmlize)
 (package-install 'org-plus-contrib)
 (package-install 'ox-reveal)
