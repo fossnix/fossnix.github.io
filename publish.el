@@ -5,17 +5,19 @@
 ;; html.
 
 ;;; Code:
+;(setq package-check-signature nil)
+
+; Set up melpa package repository
 (require 'package)
-(setq package-user-dir (expand-file-name "./.packages"))
-(setq package-archives '(("org" . "https://orgmode.org/elpa/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives
+	 '("org" . "https://orgmode.org/elpa/"))
+(add-to-list 'package-archives
+         '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives
+         '("melpa" . "https://melpa.org/packages/"))
 
-;; Initialize the package system
 (package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-
 (package-install 'htmlize)
 (package-install 'org-plus-contrib)
 (package-install 'ox-reveal)
@@ -215,6 +217,21 @@ publishing directory. Returns output file name."
         ;;      :sitemap-format-entry me/org-sitemap-format-entry
         ;;      :sitemap-style list
         ;;      :sitemap-sort-files anti-chronologically)
+	("drafts"
+	 :base-directory "posts/drafts"
+	 :base-extension "org"
+	 :recursive t
+	 :publishing-function me/org-html-publish-to-html
+	 :publishing-directory "public/drafts"
+	 :auto-sitemap nil
+         :html-link-home "/"
+         :html-link-up "/"
+         :html-head-include-scripts t
+         :html-head-include-default-style nil
+         :html-head ,me/website-html-head
+         :html-preamble me/website-html-preamble
+         :html-postamble me/website-html-postamble
+	 )
         ("tags"
          :base-directory "tags"
          :base-extension "org"
