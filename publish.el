@@ -103,6 +103,29 @@ If the org file has '#+draft: t' or '#+draft: 1', the html file will be exported
                 "ico" "cur" "css" "js" "woff" "html" "pdf"))
   "File types that are published as static files.")
 
+(defun me/weebsite-html-preamble (plist)
+  "PLIST: An entry."
+  (if (org-export-get-date plist this-date-format)
+        (plist-put plist
+             :subtitle (format "Published on %s by %s."
+                               (org-export-get-date plist this-date-format)
+                               (car (plist-get plist :author)))))
+  ;; Preamble
+  (with-temp-buffer
+    (insert-file-contents "../../html-templates/preamble.html") (buffer-string)))
+
+(defun me/weebsite-html-postamble (plist)
+  "PLIST."
+  (concat (format
+           (with-temp-buffer
+             (insert-file-contents "../../html-templates/postamble.html") (buffer-string))
+           (format-time-string this-date-format (plist-get plist :time)) (plist-get plist :creator))))
+
+(defvar site-attachments
+  (regexp-opt '("jpg" "jpeg" "gif" "png" "svg"
+                "ico" "cur" "css" "js" "woff" "html" "pdf"))
+  "File types that are published as static files.")
+
 (defun me/org-publish-generate-tags (tags kwdir kwlinks &optional pdir)
   "Display TAGS and generate a file per tag and group entries under tag.
 Extract TAGS from :filetags. The KWDIR directory will have all
@@ -205,42 +228,42 @@ publishing directory. Returns output file name."
          :html-preamble me/website-html-preamble
          :html-postamble me/website-html-postamble
          :tags-directory ,tags-dir)
-("sitemap"
-         :base-directory "posts"
-         :base-extension "org"
-         :recursive t
-         :publishing-function me/org-html-publish-to-html
-         :publishing-directory "./public/sitemap"
-         :exclude ,(regexp-opt '("README.org" "draft" "404.org"))
-         :auto-sitemap t
-         :sitemap-filename "sitemap.org"
-         :sitemap-title "Blog Index"
-         :sitemap-format-entry me/org-sitemap-format-entry
-         :sitemap-style list
-         :sitemap-sort-files anti-chronologically
+;; ("sitemap"
+;;          :base-directory "posts"
+;;          :base-extension "org"
+;;          :recursive t
+;;          :publishing-function me/org-html-publish-to-html
+;;          :publishing-directory "./public/sitemap"
+;;          :exclude ,(regexp-opt '("README.org" "draft" "404.org"))
+;;          :auto-sitemap t
+;;          :sitemap-filename "sitemap.org"
+;;          :sitemap-title "Blog Index"
+;;          :sitemap-format-entry me/org-sitemap-format-entry
+;;          :sitemap-style list
+;;          :sitemap-sort-files anti-chronologically
+;;          :html-link-home "/"
+;;          :html-link-up "/"
+;;          :html-head-include-scripts t
+;;          :html-head-include-default-style nil
+;;          :html-head ,me/website-html-head
+;;          :html-preamble me/website-html-preamble
+;;          :html-postamble me/website-html-postamble
+;;          :tags-directory ,tags-dir)
+		("drafts"
+	 :base-directory "posts/drafts"
+	 :base-extension "org"
+	 :recursive t
+	 :publishing-function me/org-html-publish-to-html
+	 :publishing-directory "public/drafts"
+	 :auto-sitemap nil
          :html-link-home "/"
          :html-link-up "/"
          :html-head-include-scripts t
          :html-head-include-default-style nil
          :html-head ,me/website-html-head
-         :html-preamble me/website-html-preamble
-         :html-postamble me/website-html-postamble
-         :tags-directory ,tags-dir)
-		;; ("drafts"
-	;;  :base-directory "posts/drafts"
-	;;  :base-extension "org"
-	;;  :recursive t
-	;;  :publishing-function me/org-html-publish-to-html
-	;;  :publishing-directory "public/drafts"
-	;;  :auto-sitemap nil
-        ;;  :html-link-home "/"
-        ;;  :html-link-up "/"
-        ;;  :html-head-include-scripts t
-        ;;  :html-head-include-default-style nil
-        ;;  :html-head ,me/website-html-head
-        ;;  :html-preamble me/website-html-preamble
-        ;;  :html-postamble me/website-html-postamble
-	;;  )
+         :html-preamble me/weebsite-html-preamble
+         :html-postamble me/weebsite-html-postamble
+	 )
         ("tags"
          :base-directory "tags"
          :base-extension "org"
