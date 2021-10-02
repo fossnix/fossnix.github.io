@@ -214,7 +214,7 @@ publishing directory. Returns output file name."
              :exclude ,(regexp-opt '("README.org" "draft" "404.org"))
              :auto-sitemap t
              :sitemap-filename "sitemap.org"
-             :sitemap-title "Fossnix's Sitemap"
+             :sitemap-title "Fossnix Sitemap"
              :sitemap-format-entry me/org-sitemap-format-entry
              :sitemap-style list
              :sitemap-sort-files anti-chronologically)
