@@ -247,9 +247,7 @@ publishing directory. Returns output file name."
          :html-link-up "/tags"
          :html-head-include-scripts t
          :html-head-include-default-style nil
-         :html-head ,me/website-html-head
-         :html-preamble me/website-html-preamble
-         :html-postamble me/website-html-postamble)
+         :html-head ,me/website-html-head)
         ("about"
          :base-directory "about"
          :base-extension "org"
