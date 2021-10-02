@@ -205,34 +205,34 @@ publishing directory. Returns output file name."
          :html-preamble me/website-html-preamble
          :html-postamble me/website-html-postamble
          :tags-directory ,tags-dir)
-	    ;; ("sitemap"
-	    ;;  :base-directory "posts"
-        ;;      :base-extension "org"
-        ;;      :recursive t
-        ;;      :publishing-function me/org-html-publish-to-html
-        ;;      :publishing-directory "./public/sitemap"
-        ;;      :exclude ,(regexp-opt '("README.org" "draft" "404.org"))
-        ;;      :auto-sitemap t
-        ;;      :sitemap-filename "sitemap.org"
-        ;;      :sitemap-title "Fossnix's Sitemap"
-        ;;      :sitemap-format-entry me/org-sitemap-format-entry
-        ;;      :sitemap-style list
-        ;;      :sitemap-sort-files anti-chronologically)
-	("drafts"
-	 :base-directory "posts/drafts"
-	 :base-extension "org"
-	 :recursive t
-	 :publishing-function me/org-html-publish-to-html
-	 :publishing-directory "public/drafts"
-	 :auto-sitemap nil
-         :html-link-home "/"
-         :html-link-up "/"
-         :html-head-include-scripts t
-         :html-head-include-default-style nil
-         :html-head ,me/website-html-head
-         :html-preamble me/website-html-preamble
-         :html-postamble me/website-html-postamble
-	 )
+	    ("sitemap"
+	     :base-directory "posts"
+             :base-extension "org"
+             :recursive t
+             :publishing-function me/org-html-publish-to-html
+             :publishing-directory "./public/sitemap"
+             :exclude ,(regexp-opt '("README.org" "draft" "404.org"))
+             :auto-sitemap t
+             :sitemap-filename "sitemap.org"
+             :sitemap-title "Fossnix's Sitemap"
+             :sitemap-format-entry me/org-sitemap-format-entry
+             :sitemap-style list
+             :sitemap-sort-files anti-chronologically)
+	;; ("drafts"
+	;;  :base-directory "posts/drafts"
+	;;  :base-extension "org"
+	;;  :recursive t
+	;;  :publishing-function me/org-html-publish-to-html
+	;;  :publishing-directory "public/drafts"
+	;;  :auto-sitemap nil
+        ;;  :html-link-home "/"
+        ;;  :html-link-up "/"
+        ;;  :html-head-include-scripts t
+        ;;  :html-head-include-default-style nil
+        ;;  :html-head ,me/website-html-head
+        ;;  :html-preamble me/website-html-preamble
+        ;;  :html-postamble me/website-html-postamble
+	;;  )
         ("tags"
          :base-directory "tags"
          :base-extension "org"
