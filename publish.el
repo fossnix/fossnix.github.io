@@ -21,16 +21,12 @@
 
 (package-install 'htmlize)
 (package-install 'org-plus-contrib)
-(package-install 'ox-reveal)
-;; Don't want to invoke insert-shebang locally
-(remove-hook 'find-file-hook 'insert-shebang)
 
 (require 'org)
 (require 'ox-publish)
 (require 'htmlize)
 (require 'ox-html)
 (require 'ox-rss)
-(require 'ox-reveal)
 
 ;; setting to nil, avoids "Author: x" at the bottom
 (setq org-export-with-section-numbers nil
@@ -58,7 +54,6 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link rel='stylesheet' href='https://code.cdn.mozilla.net/fonts/fira.css'>
 <link rel='stylesheet' href='/css/site.css?v=2' type='text/css'/>
-<link rel='stylesheet' href='/css/custom.css' type='text/css'/>
 <link rel='stylesheet' href='/css/dracula.css' type='text/css'/>
 <link rel='stylesheet' href='/css/syntax-coloring.css' type='text/css'/>")
 

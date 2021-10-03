@@ -1,0 +1,164 @@
+#+TITLE: Make a blog with Org Mode and Netlify (Pt. 1)
+#+AUTHOR: Arya
+#+DATE: <2021-10-03 Sun>
+#+SETUPFILE: "../../org-templates/post.org"
+#+FILETAGS: org netlify emacs website blog
+Every day I get stunned even more by what org can do.
+
+Org can even be used to make a website.
+
+In this article, I will show how to create a blog with org mode and netlify.
+
+Netlify is like Github Pages.
+
+It is a serverless platform for hosting websites.
+
+They are used alot for blogs made with static site generators but support pure html too!
+
+They have a very generous free plan compared to github pages (which many small tech blogs use).
+
+* The elisp
+Let me get this out straight. You will need to use alot of elisp.
+
+I'm sorry if this part of the article looks more like documenting code rather than an article lol.
+
+Now we need to initialize emacs's package manager.
+
+We need this as we will be using some extra packages from the org and melpa package repositories
+#+begin_src emacs-lisp
+(require 'package)
+(setq package-user-dir (expand-file-name "./.packages"))
+(setq package-archives '(("org" . "https://orgmode.org/elpa/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+;; Initialize the package system
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+#+end_src
+
+We need to install htmlize for syntax highlighting and org-plus-contrib for various misc. functions like rss feed generation.
+#+begin_src emacs-lisp
+(package-install 'htmlize)
+(package-install 'org-plus-contrib)
+#+end_src
+
+We need to now load some packages and libraries
+
+We just installed htmlize and org-plus-contrib but they will not be loaded unless we say so by using ~(require)~
+#+begin_src emacs-lisp
+(require 'org)
+(require 'ox-publish)
+(require 'htmlize)
+(require 'ox-html)
+(require 'ox-rss)
+#+end_src
+
+Now these setq commands will make the export look way better
+#+begin_src emacs-lisp
+(setq org-export-with-section-numbers nil ;; Remove Numbering of Headings
+      org-export-with-smart-quotes t ;; treats pairs of double quotes as primary quotes, pairs of single quotes as secondary quotes, and single quote marks as apostrophes
+      org-export-with-toc nil) ;; No Table of Contents. They look ugly on smaller posts. can be changed on a per-file basis
+#+end_src
+
+Now we will set the tags and draft directories
+#+begin_src emacs-lisp
+(defvar draft-dir (expand-file-name "./public/drafts")) ;; yes it should be public/drafts
+(defvar tags-dir "tags/")
+#+end_src
+
+Now we will set the date format for displaying when the page was last updated
+#+begin_src emacs-lisp
+(defvar this-date-format "%b %d, %Y")
+#+end_src
+
+Now we will set the divs which are going to be there in the html export.
+#+begin_src emacs-lisp
+(setq org-html-divs '((preamble "header" "top")
+                      (content "main" "content")
+                      (postamble "footer" "postamble")))
+#+end_src
+
+Top level elements should be wrapped in the section tag.
+#+begin_src emacs-lisp
+(setq org-html-container-element "section")
+#+end_src
+
+Make timestamps use the above date format.
+#+begin_src emacs-lisp
+(setq org-html-metadata-timestamp-format this-date-format)
+#+end_src
+
+We now need to make sure the html looks good
+#+begin_src emacs-lisp
+  (setq org-html-checkbox-type 'html
+        org-html-html5-fancy t ;; Fancy HTML
+        org-html-validation-link nil ;; Dont have a link for html validation. It looks ugly
+        org-html-doctype "html5" ;; Use html5
+        org-html-htmlize-output-type 'css ;; HTMLize styling  should be in css format
+        org-src-fontify-natively t) ;; Use monospace for code blocks
+#+end_src
+
+Now we are going to add our stylesheets
+
+You may not have the css. I will show my sample css in the next heading.
+#+begin_src emacs-lisp
+(defvar me/website-html-head
+"<!-- Favicon -->
+<link rel='shortcut icon' type='image/jpg' href='/images/favicon.jpg'/>
+<!-- Render website size according to device width -->
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<!-- Font -->
+<link rel='stylesheet' href='https://code.cdn.mozilla.net/fonts/fira.css'>
+<!-- The styling for the webpage  -->
+<link rel='stylesheet' href='/css/site.css?v=2' type='text/css'/>
+<!-- Dracula theming -->
+<link rel='stylesheet' href='/css/dracula.css' type='text/css'/>
+<!-- HTMLize syntax colouring -->
+<link rel='stylesheet' href='/css/syntax-coloring.css' type='text/css'/>")
+#+end_src
+
+The publishing function is the function that converts the org to html
+
+It is a lot of code.
+#+begin_src emacs-lisp
+(defun me/org-html-publish-to-html (plist filename pubdir)
+  "Publish an org file to HTML.
+
+FILENAME is the filename of the Org file to be published.  PLIST
+is the property list for the given project.  PUB-DIR is the
+publishing directory.
+
+If the org file has '#+draft: t' or '#+draft: 1', the html file will be exported in ./public/drafts/"
+  (with-temp-buffer
+    (unless (file-directory-p pubdir)
+      (make-directory pubdir)) ;; Create publish dir if it doesnt exist aldready
+    (org-publish-org-to 'html filename
+		                (concat "." (or (plist-get plist :html-extension)  org-html-extension "html"))
+		                plist pubdir)))
+#+end_src
+
+The preamble function is what comes before the content. It includes the navigation bar.
+#+begin_src emacs-lisp
+(defun me/website-html-preamble (plist)
+  "PLIST: An entry."
+  (if (org-export-get-date plist this-date-format)
+        (plist-put plist
+             :subtitle (format "Published on %s by %s."
+                               (org-export-get-date plist this-date-format)
+                               (car (plist-get plist :author)))))
+  ;; Preamble
+  (with-temp-buffer
+    (insert-file-contents "../html-templates/preamble.html") (buffer-string)))
+#+end_src
+
+The postamble is what comes after the content. AKA footer
+#+begin_src emacs-lisp
+(defun me/website-html-postamble (plist)
+  "PLIST."
+  (concat (format
+           (with-temp-buffer
+             (insert-file-contents "../html-templates/postamble.html") (buffer-string))
+           (format-time-string this-date-format (plist-get plist :time)) (plist-get plist :creator))))
+#+end_src
