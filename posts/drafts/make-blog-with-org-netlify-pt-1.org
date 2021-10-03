@@ -162,3 +162,11 @@ The postamble is what comes after the content. AKA footer
              (insert-file-contents "../html-templates/postamble.html") (buffer-string))
            (format-time-string this-date-format (plist-get plist :time)) (plist-get plist :creator))))
 #+end_src
+
+Now we need to chose the file extensions which are published as static files
+#+begin_src emacs-lisp
+(defvar site-attachments
+  (regexp-opt '("jpg" "jpeg" "gif" "png" "svg"
+                "ico" "cur" "css" "js" "woff" "html" "pdf"))
+  "File types that are published as static files.")
+#+end_src

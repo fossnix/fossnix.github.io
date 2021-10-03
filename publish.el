@@ -50,7 +50,7 @@
       org-src-fontify-natively t)
 
 (defvar me/website-html-head
-"<link rel='shortcut icon' type='image/jpg' href='/images/favicon.jpg'/>
+  "<link rel='shortcut icon' type='image/jpg' href='/images/favicon.jpg'/>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link rel='stylesheet' href='https://code.cdn.mozilla.net/fonts/fira.css'>
 <link rel='stylesheet' href='/css/site.css?v=2' type='text/css'/>
@@ -116,11 +116,6 @@ If the org file has '#+draft: t' or '#+draft: 1', the html file will be exported
              (insert-file-contents "../../html-templates/postamble.html") (buffer-string))
            (format-time-string this-date-format (plist-get plist :time)) (plist-get plist :creator))))
 
-(defvar site-attachments
-  (regexp-opt '("jpg" "jpeg" "gif" "png" "svg"
-                "ico" "cur" "css" "js" "woff" "html" "pdf"))
-  "File types that are published as static files.")
-
 (defun me/org-publish-generate-tags (tags kwdir kwlinks &optional pdir)
   "Display TAGS and generate a file per tag and group entries under tag.
 Extract TAGS from :filetags. The KWDIR directory will have all
@@ -143,7 +138,7 @@ for another good implemenation of tags."
                   (append-to-file (point-min) (point-max) (concat kwdir tag ".org")))
               (progn
                 (unless (file-directory-p kwdir)
-                      (make-directory kwdir))
+                  (make-directory kwdir))
                 (with-temp-file
                     (concat kwdir tag ".org")
                   (insert (format "#+TITLE: %s\n- [[file:../%s][%s]]"
